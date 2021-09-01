@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
           }
         }
       }
-    };
+    } as Function(bool clickedTenjinLink, bool isFirstSession, String deferredDeeplinkUrl);
     super.initState();
   }
 

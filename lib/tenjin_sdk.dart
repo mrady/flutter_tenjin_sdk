@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 class TenjinSDK {
@@ -8,11 +9,11 @@ class TenjinSDK {
   static TenjinSDK instance = TenjinSDK._();
 
   Function(bool clickedTenjinLink, bool isFirstSession,
-      String deferredDeeplinkUrl)? _onSucessDeeplink;
+      String deferredDeeplinkUrl) _onSucessDeeplink;
 
   final MethodChannel _channel = const MethodChannel('tenjin_sdk');
 
-  Future init({required String apiKey}) async {
+  Future init({@required String apiKey}) async {
     _channel.invokeMethod('init', {'apiKey': apiKey});
     _channel.setMethodCallHandler((call) async {
       if (call.method == 'onSucessDeeplink') {
@@ -62,14 +63,14 @@ class TenjinSDK {
   }
 
   void transaction({
-    required String productId,
-    required String currencyCode,
-    required double unitPrice,
-    required int quantity,
-    String? androidPurchaseData,
-    String? androidDataSignature,
-    String? iosReceipt,
-    String? iosTransactionId,
+    @required String productId,
+    @required String currencyCode,
+    @required double unitPrice,
+    @required int quantity,
+    String androidPurchaseData,
+    String androidDataSignature,
+    String iosReceipt,
+    String iosTransactionId,
   }) {
     bool isValidIOS =
         Platform.isIOS && iosReceipt != null && iosTransactionId != null;

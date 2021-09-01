@@ -95,7 +95,6 @@ class TenjinSdkPlugin: FlutterPlugin, MethodCallHandler {
     result.success(null)
   }
 
-
   fun optIn(call: MethodCall, result: Result){
     instance.optIn()
     result.success(null)
@@ -153,4 +152,5 @@ class TenjinSdkPlugin: FlutterPlugin, MethodCallHandler {
     instance.appendAppSubversion(value.toInt())
     result.success(null)
   }
+
 }
